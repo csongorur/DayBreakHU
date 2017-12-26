@@ -12,7 +12,7 @@ public class MysticWolf extends Character {
     private static MysticWolf instance = null;
 
     private MysticWolf(Context context) {
-        super("Mystic wolf", context, R.raw.mystic_wolf, R.drawable.mysticwolf, 3);
+        super("Mystic wolf", context, R.raw.mystic_wolf, R.drawable.mysticwolf, 4);
     }
 
     public static MysticWolf getInstance(Context context) {

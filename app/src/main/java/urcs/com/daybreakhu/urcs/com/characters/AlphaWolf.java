@@ -12,7 +12,7 @@ public class AlphaWolf extends Character {
     private static AlphaWolf instance = null;
 
     private AlphaWolf(Context context) {
-        super("Alpha wolf", context, R.raw.alpha_wolf, R.drawable.alphawolf, 2);
+        super("Alpha wolf", context, R.raw.alpha_wolf, R.drawable.alphawolf, 3);
     }
 
     public static AlphaWolf getInstance(Context context) {

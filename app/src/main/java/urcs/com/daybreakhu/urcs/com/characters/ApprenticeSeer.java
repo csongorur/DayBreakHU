@@ -12,7 +12,7 @@ public class ApprenticeSeer extends Character {
     private static ApprenticeSeer instance = null;
 
     private ApprenticeSeer(Context context) {
-        super("Apprentice Seer", context, R.raw.apprentice_seer, R.drawable.apprenticeseer, 4);
+        super("Apprentice Seer", context, R.raw.apprentice_seer, R.drawable.apprenticeseer, 5);
     }
 
     public static ApprenticeSeer getInstance(Context context) {

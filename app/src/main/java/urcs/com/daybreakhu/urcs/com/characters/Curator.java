@@ -12,7 +12,7 @@ public class Curator extends Character {
     private static Curator instance = null;
 
     private Curator(Context context) {
-        super("Curator", context, R.raw.curator, R.drawable.curator, 9);
+        super("Curator", context, R.raw.curator, R.drawable.curator, 10);
     }
 
     public static Curator getInstance(Context context) {

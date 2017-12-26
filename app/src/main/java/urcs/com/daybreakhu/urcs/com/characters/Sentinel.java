@@ -12,7 +12,7 @@ public class Sentinel extends Character {
     private static Sentinel instance = null;
 
     private Sentinel(Context context) {
-        super("Sentinel", context, R.raw.sentinel, R.drawable.sentinel, 0);
+        super("Sentinel", context, R.raw.sentinel, R.drawable.sentinel, 1);
     }
 
     public static Sentinel getInstance(Context context) {

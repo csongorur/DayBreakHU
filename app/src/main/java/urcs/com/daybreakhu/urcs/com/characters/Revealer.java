@@ -12,7 +12,7 @@ public class Revealer extends Character {
     private static Revealer instance = null;
 
     private Revealer(Context context) {
-        super("Revealer", context, R.raw.revealer, R.drawable.revealer, 8);
+        super("Revealer", context, R.raw.revealer, R.drawable.revealer, 9);
     }
 
     public static Revealer getInstance(Context context) {

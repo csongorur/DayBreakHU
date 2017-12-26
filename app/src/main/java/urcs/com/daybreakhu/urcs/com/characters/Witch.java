@@ -12,7 +12,7 @@ public class Witch extends Character {
     private static Witch instance = null;
 
     private Witch(Context context) {
-        super("Witch", context, R.raw.witch, R.drawable.witch, 6);
+        super("Witch", context, R.raw.witch, R.drawable.witch, 7);
     }
 
     public static Witch getInstance(Context context) {

@@ -12,7 +12,7 @@ public class ParanormalInvestigator extends Character {
     private static ParanormalInvestigator instance = null;
 
     private ParanormalInvestigator(Context context) {
-        super("Paranormal investigator", context, R.raw.paranormal_investigator, R.drawable.paranormal, 5);
+        super("Paranormal investigator", context, R.raw.paranormal_investigator, R.drawable.paranormal, 6);
     }
 
     public static ParanormalInvestigator getInstance(Context context) {

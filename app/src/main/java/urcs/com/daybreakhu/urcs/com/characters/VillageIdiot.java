@@ -12,7 +12,7 @@ public class VillageIdiot extends Character {
     private static VillageIdiot instance = null;
 
     private VillageIdiot(Context context) {
-        super("Village idiot", context, R.raw.village_idiot, R.drawable.village, 7);
+        super("Village idiot", context, R.raw.village_idiot, R.drawable.village, 8);
     }
 
     public static VillageIdiot getInstance(Context context) {

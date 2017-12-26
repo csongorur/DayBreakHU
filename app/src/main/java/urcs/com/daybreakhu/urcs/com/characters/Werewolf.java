@@ -12,7 +12,7 @@ public class Werewolf extends Character {
     private static Werewolf instance = null;
 
     private Werewolf(Context context) {
-        super("Werewolf", context, R.raw.were_wolf, R.drawable.werewolf, 1);
+        super("Werewolf", context, R.raw.were_wolf, R.drawable.werewolf, 2);
     }
 
     public static Werewolf getInstance(Context context) {

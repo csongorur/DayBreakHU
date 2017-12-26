@@ -23,6 +23,8 @@ import urcs.com.daybreakhu.urcs.com.characters.MysticWolf;
 import urcs.com.daybreakhu.urcs.com.characters.ParanormalInvestigator;
 import urcs.com.daybreakhu.urcs.com.characters.Revealer;
 import urcs.com.daybreakhu.urcs.com.characters.Sentinel;
+import urcs.com.daybreakhu.urcs.com.characters.Start;
+import urcs.com.daybreakhu.urcs.com.characters.Stop;
 import urcs.com.daybreakhu.urcs.com.characters.VillageIdiot;
 import urcs.com.daybreakhu.urcs.com.characters.Werewolf;
 import urcs.com.daybreakhu.urcs.com.characters.Witch;
@@ -83,7 +85,9 @@ public class MainFragment extends Fragment {
     private void initObjects(View view) {
         // init character list
         characterList = new ArrayList<>();
+        characterList.add(Start.getInstance(getContext()));
         characterList.add(Werewolf.getInstance(getContext()));
+        characterList.add(Stop.getInstance(getContext()));
 
         // get checkboxes
         sentinel_chb = view.findViewById(R.id.sentinel_chb);
