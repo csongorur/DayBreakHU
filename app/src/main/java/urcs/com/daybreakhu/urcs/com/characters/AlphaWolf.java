@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class AlphaWolf implements CharacterInterface {
-    private String name;
-    private Context context;
+public class AlphaWolf extends Character {
     private static AlphaWolf instance = null;
 
-    protected AlphaWolf(Context context) {
-        this.context = context;
-        this.name = "Alpha wolf";
+    private AlphaWolf(Context context) {
+        super("Alpha wolf", context, R.raw.alpha_wolf, R.drawable.alphawolf, 2);
     }
 
     public static AlphaWolf getInstance(Context context) {
         if (instance == null) {
+            instance = new AlphaWolf(context);
+        } else if (instance.isEnd) {
             instance = new AlphaWolf(context);
         }
 
@@ -26,12 +26,7 @@ public class AlphaWolf implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Alpha wolf", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

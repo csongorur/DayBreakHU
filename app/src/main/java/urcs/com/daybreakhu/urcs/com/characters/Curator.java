@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class Curator implements CharacterInterface {
-    private String name;
-    private Context context;
+public class Curator extends Character {
     private static Curator instance = null;
 
-    protected Curator(Context context) {
-        this.context = context;
-        this.name = "Curator";
+    private Curator(Context context) {
+        super("Curator", context, R.raw.curator, R.drawable.curator, 9);
     }
 
     public static Curator getInstance(Context context) {
         if (instance == null) {
+            instance = new Curator(context);
+        } else if (instance.isEnd) {
             instance = new Curator(context);
         }
 
@@ -26,12 +26,7 @@ public class Curator implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Curator", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class Witch implements CharacterInterface {
-    private String name;
-    private Context context;
+public class Witch extends Character {
     private static Witch instance = null;
 
-    protected Witch(Context context) {
-        this.context = context;
-        this.name = "Witch";
+    private Witch(Context context) {
+        super("Witch", context, R.raw.witch, R.drawable.witch, 6);
     }
 
     public static Witch getInstance(Context context) {
         if (instance == null) {
+            instance = new Witch(context);
+        } else if (instance.isEnd) {
             instance = new Witch(context);
         }
 
@@ -26,12 +26,7 @@ public class Witch implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Witch", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,15 +17,14 @@ import java.util.List;
 
 import urcs.com.daybreakhu.urcs.com.characters.AlphaWolf;
 import urcs.com.daybreakhu.urcs.com.characters.ApprenticeSeer;
-import urcs.com.daybreakhu.urcs.com.characters.Bodyguard;
-import urcs.com.daybreakhu.urcs.com.characters.CharacterInterface;
+import urcs.com.daybreakhu.urcs.com.characters.Character;
 import urcs.com.daybreakhu.urcs.com.characters.Curator;
-import urcs.com.daybreakhu.urcs.com.characters.DreamWolf;
 import urcs.com.daybreakhu.urcs.com.characters.MysticWolf;
 import urcs.com.daybreakhu.urcs.com.characters.ParanormalInvestigator;
 import urcs.com.daybreakhu.urcs.com.characters.Revealer;
 import urcs.com.daybreakhu.urcs.com.characters.Sentinel;
 import urcs.com.daybreakhu.urcs.com.characters.VillageIdiot;
+import urcs.com.daybreakhu.urcs.com.characters.Werewolf;
 import urcs.com.daybreakhu.urcs.com.characters.Witch;
 
 
@@ -39,8 +39,6 @@ public class MainFragment extends Fragment {
     private CheckBox village_chb;
     private CheckBox revealer_chb;
     private CheckBox curator_chb;
-    private CheckBox dream_chb;
-    private CheckBox bodyguard_chb;
 
     private RelativeLayout sentinel_layout;
     private RelativeLayout alpha_layout;
@@ -51,8 +49,6 @@ public class MainFragment extends Fragment {
     private RelativeLayout village_layout;
     private RelativeLayout revealer_layout;
     private RelativeLayout curator_layout;
-    private RelativeLayout dream_layout;
-    private RelativeLayout bodyguard_layout;
 
     private TextView sentinel_txt;
     private TextView alpha_txt;
@@ -63,10 +59,10 @@ public class MainFragment extends Fragment {
     private TextView village_txt;
     private TextView revealer_txt;
     private TextView curator_txt;
-    private TextView dream_txt;
-    private TextView bodyguard_txt;
 
-    private List<CharacterInterface> character_list;
+    private List<Character> characterList;
+
+    private Button start_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,13 +76,14 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    public List<CharacterInterface> getCharacterList() {
-        return this.character_list;
+    public List<Character> getCharacterList() {
+        return this.characterList;
     }
 
     private void initObjects(View view) {
         // init character list
-        character_list = new ArrayList<CharacterInterface>();
+        characterList = new ArrayList<>();
+        characterList.add(Werewolf.getInstance(getContext()));
 
         // get checkboxes
         sentinel_chb = view.findViewById(R.id.sentinel_chb);
@@ -98,8 +95,6 @@ public class MainFragment extends Fragment {
         village_chb = view.findViewById(R.id.village_chb);
         revealer_chb = view.findViewById(R.id.revealer_chb);
         curator_chb = view.findViewById(R.id.curator_chb);
-        dream_chb = view.findViewById(R.id.dream_chb);
-        bodyguard_chb = view.findViewById(R.id.bodyguard_chb);
 
         // get character layouts
         sentinel_layout = view.findViewById(R.id.sentinel_layout);
@@ -111,8 +106,6 @@ public class MainFragment extends Fragment {
         village_layout = view.findViewById(R.id.village_layout);
         revealer_layout = view.findViewById(R.id.revealer_layout);
         curator_layout = view.findViewById(R.id.curator_layout);
-        dream_layout = view.findViewById(R.id.dream_layout);
-        bodyguard_layout = view.findViewById(R.id.bodyguard_layout);
 
         // get character texts
         sentinel_txt = view.findViewById(R.id.sentinel_txt);
@@ -124,21 +117,34 @@ public class MainFragment extends Fragment {
         village_txt = view.findViewById(R.id.village_txt);
         revealer_txt = view.findViewById(R.id.revealer_txt);
         curator_txt = view.findViewById(R.id.curator_txt);
-        dream_txt = view.findViewById(R.id.dream_txt);
-        bodyguard_txt = view.findViewById(R.id.bodyguard_txt);
+
+        // get buttons
+        start_btn = getActivity().findViewById(R.id.start_btn);
+        start_btn.setEnabled(false);
+        Button stop_btn = getActivity().findViewById(R.id.stop_btn);
+        stop_btn.setText(R.string.stop);
+        stop_btn.setEnabled(false);
+        Button new_btn = getActivity().findViewById(R.id.new_btn);
+        new_btn.setEnabled(false);
     }
 
-    private void clickOnCharacterLayout(RelativeLayout layout, TextView text, CheckBox checkBox, CharacterInterface character) {
+    private void clickOnCharacterLayout(RelativeLayout layout, TextView text, CheckBox checkBox, Character character) {
         if (checkBox.isChecked()) {
             checkBox.setChecked(false);
             layout.setBackgroundResource(R.drawable.border);
             text.setTextColor(Color.BLACK);
-            character_list.remove(character);
+            characterList.remove(character);
         } else {
             checkBox.setChecked(true);
             layout.setBackgroundColor(Color.parseColor("#4c0000"));
             text.setTextColor(Color.WHITE);
-            character_list.add(character);
+            characterList.add(character);
+        }
+
+        if (characterList.size() == 0) {
+            start_btn.setEnabled(false);
+        } else {
+            start_btn.setEnabled(true);
         }
     }
 
@@ -205,20 +211,6 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 clickOnCharacterLayout(curator_layout, curator_txt, curator_chb, Curator.getInstance(getContext()));
-            }
-        });
-
-        dream_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickOnCharacterLayout(dream_layout, dream_txt, dream_chb, DreamWolf.getInstance(getContext()));
-            }
-        });
-
-        bodyguard_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickOnCharacterLayout(bodyguard_layout, bodyguard_txt, bodyguard_chb, Bodyguard.getInstance(getContext()));
             }
         });
     }

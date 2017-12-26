@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class Revealer implements CharacterInterface {
-    private String name;
-    private Context context;
+public class Revealer extends Character {
     private static Revealer instance = null;
 
-    protected Revealer(Context context) {
-        this.context = context;
-        this.name = "Revealer";
+    private Revealer(Context context) {
+        super("Revealer", context, R.raw.revealer, R.drawable.revealer, 8);
     }
 
     public static Revealer getInstance(Context context) {
         if (instance == null) {
+            instance = new Revealer(context);
+        } else if (instance.isEnd) {
             instance = new Revealer(context);
         }
 
@@ -26,12 +26,7 @@ public class Revealer implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Revealer", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

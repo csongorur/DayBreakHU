@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class MysticWolf implements CharacterInterface {
-    private String name;
-    private Context context;
+public class MysticWolf extends Character {
     private static MysticWolf instance = null;
 
-    protected MysticWolf(Context context) {
-        this.context = context;
-        this.name = "Mystic wolf";
+    private MysticWolf(Context context) {
+        super("Mystic wolf", context, R.raw.mystic_wolf, R.drawable.mysticwolf, 3);
     }
 
     public static MysticWolf getInstance(Context context) {
         if (instance == null) {
+            instance = new MysticWolf(context);
+        } else if (instance.isEnd) {
             instance = new MysticWolf(context);
         }
 
@@ -26,12 +26,7 @@ public class MysticWolf implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Mystic wolf", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

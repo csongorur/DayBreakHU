@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class ApprenticeSeer implements CharacterInterface {
-    private String name;
-    private Context context;
+public class ApprenticeSeer extends Character {
     private static ApprenticeSeer instance = null;
 
-    protected ApprenticeSeer(Context context) {
-        this.context = context;
-        this.name = "Apprentice Seer";
+    private ApprenticeSeer(Context context) {
+        super("Apprentice Seer", context, R.raw.apprentice_seer, R.drawable.apprenticeseer, 4);
     }
 
     public static ApprenticeSeer getInstance(Context context) {
         if (instance == null) {
+            instance = new ApprenticeSeer(context);
+        } else if (instance.isEnd) {
             instance = new ApprenticeSeer(context);
         }
 
@@ -26,12 +26,7 @@ public class ApprenticeSeer implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Apprentice seer", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

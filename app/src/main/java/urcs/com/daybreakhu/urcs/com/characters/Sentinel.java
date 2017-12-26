@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class Sentinel implements CharacterInterface {
-    private String name;
-    private Context context;
+public class Sentinel extends Character {
     private static Sentinel instance = null;
 
-    protected Sentinel(Context context) {
-        this.context = context;
-        this.name = "Sentinel";
+    private Sentinel(Context context) {
+        super("Sentinel", context, R.raw.sentinel, R.drawable.sentinel, 0);
     }
 
     public static Sentinel getInstance(Context context) {
         if (instance == null) {
+            instance = new Sentinel(context);
+        } else if (instance.isEnd) {
             instance = new Sentinel(context);
         }
 
@@ -26,12 +26,7 @@ public class Sentinel implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Sentinel", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }

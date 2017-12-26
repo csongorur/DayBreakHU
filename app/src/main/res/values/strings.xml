@@ -1,6 +1,27 @@
 <resources>
-    <string name="app_name">DayBreakHU</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Daybreak hu</string>
+    <string name="title">Daybreak társasjáték</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="new_game">Új játék</string>
+    <string name="sentinel">Sentinel</string>
+    <string name="alpha_wolf">Alpha wolf</string>
+    <string name="mystic_wolf">Mystic wolf</string>
+    <string name="apprentice_seer">Apprentice Seer</string>
+    <string name="character_image_view">character image view</string>
+    <string name="paranormal_investigator">Paranormal investigator</string>
+    <string name="witch">Witch</string>
+    <string name="village_idiot">Village idiot</string>
+    <string name="revealer">Revealer</string>
+    <string name="curator">Curator</string>
+    <string name="sentinel_image_view">Sentinel image view</string>
+    <string name="alpha_wolf_image_view">Alpha wolf image view</string>
+    <string name="mystic_wolf_image_view">Mystic wolf image view</string>
+    <string name="apprentice_seer_image_view">Apprentice seer image view</string>
+    <string name="paranormal_image_view">Paranormal image view</string>
+    <string name="witch_image_view">Witch image view</string>
+    <string name="village_idiot_image_view">Village idiot image view</string>
+    <string name="revealer_image_view">Reveler image view</string>
+    <string name="curator_image_view">Curator image view</string>
+    <string name="start_hu">Indít</string>
 </resources>

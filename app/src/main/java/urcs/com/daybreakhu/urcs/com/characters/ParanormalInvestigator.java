@@ -1,24 +1,24 @@
 package urcs.com.daybreakhu.urcs.com.characters;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import urcs.com.daybreakhu.R;
 
 /**
  * Created by ur on 10.12.2017.
  */
 
-public class ParanormalInvestigator implements CharacterInterface {
-    private String name;
-    private Context context;
+public class ParanormalInvestigator extends Character {
     private static ParanormalInvestigator instance = null;
 
-    protected ParanormalInvestigator(Context context) {
-        this.context = context;
-        this.name = "Paranormal investigator";
+    private ParanormalInvestigator(Context context) {
+        super("Paranormal investigator", context, R.raw.paranormal_investigator, R.drawable.paranormal, 5);
     }
 
     public static ParanormalInvestigator getInstance(Context context) {
         if (instance == null) {
+            instance = new ParanormalInvestigator(context);
+        } else if (instance.isEnd) {
             instance = new ParanormalInvestigator(context);
         }
 
@@ -26,12 +26,7 @@ public class ParanormalInvestigator implements CharacterInterface {
     }
 
     @Override
-    public void playMusic() {
-        Toast.makeText(context, "Play Paranormal investigator", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public void deleteInstance() {
+        instance = null;
     }
 }
