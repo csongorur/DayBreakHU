@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="urcs.com.daybreakhu.MainActivity"
-    android:background="#164c1c">
+    android:background="#164c1c"
+    android:keepScreenOn="true">
 
 
     <LinearLayout
